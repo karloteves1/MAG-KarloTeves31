@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 
 # Initialize the Flask application
-app = Flask(3.0.3)
+app = Flask(__name__)
 
 # Define the main route to handle GET and POST requests
 @app.route('/', methods=['GET', 'POST'])
