@@ -1,28 +1,28 @@
 from flask import Flask, render_template, request
 
-# Create an instance of the Flask class for the web application
+# Initialize the Flask application
 app = Flask(gunicorn)
 
-# Define the main route for the application, which handles both GET and POST requests
+# Define the main route to handle GET and POST requests
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
-    # Initialize a variable to store the processed age value, default is 0
-    result_age = 0
+    # Initialize a variable to store the calculated woman's age
+    result_age = None
     
     if request.method == 'POST':
         try:
-            # Retrieve the age input from the form and convert it to an integer
+            # Get the man's age from the form
             age = int(request.form['age'])
-            # Calculation: Add 6 to the input age and store the result
-            result_age = age + 7
+            # Calculate the woman's age using the provided formula
+            result_age = age / 2 + 7
         except ValueError:
-            # If the input is not a valid integer, return an empty string
-            result_age = ""
+            # Handle invalid input (non-integer input)
+            result_age = "Invalid input. Please enter a valid number."
             
-    # Render the index.html template and pass the processed age to it
-    return render_template("index.html", age=result_age)
+    # Render the index.html template and pass the calculated age to it
+    return render_template("index.html", result=result_age)
 
-# Run the Flask application in debug mode when the script is executed directly
+# Run the application
 if __name__ == '__main__':
-  app.run(debug=True)
+    app.run(debug=True)
