@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 
 # Create an instance of the Flask class for the web application
-app = Flask(__name__)
+app = Flask(gunicorn)
 
 # Define the main route for the application, which handles both GET and POST requests
 @app.route('/', methods=['GET', 'POST'])
@@ -15,7 +15,7 @@ def index():
             # Retrieve the age input from the form and convert it to an integer
             age = int(request.form['age'])
             # Calculation: Add 6 to the input age and store the result
-            result_age = age + 6
+            result_age = age + 7
         except ValueError:
             # If the input is not a valid integer, return an empty string
             result_age = ""
