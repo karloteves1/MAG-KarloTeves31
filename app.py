@@ -18,7 +18,7 @@ def index():
             result_age = age / 2 + 7
         except ValueError:
             # Handle invalid input (non-integer input)
-            result_age = "Invalid input. Please enter a valid number."
+            result_age = ""
             
     # Render the index.html template and pass the calculated age to it
     return render_template("index.html", result=result_age)
